@@ -1,0 +1,105 @@
+body{
+    background: #f3f3f3;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: #3a3a3a;
+    padding-bottom: 50px;
+}
+
+
+.hide{
+    display: none;
+}
+
+
+#wrapper{
+    background: #FFF;
+    border: 1px #cfcfcf solid;
+    width: 618px;
+    margin: 30px auto 0;
+    padding: 40px;
+}
+
+
+h1{
+    font-size: 40px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#description{
+    margin: 20px auto;
+}
+#description2{
+    color: #777;
+    width: 700px;
+    margin: auto;
+    font-size: 12px;
+}
+
+#drop_files{
+    color: #bcbcbc;
+    font-size: 20px;
+    border: 3px #AAA dashed;
+    height: 130px;
+    margin: 30px auto 0;
+    padding-top: 30px;
+    text-align: center;
+}
+#drop_files.active{
+    color: #555;
+    border-color: #555;
+}
+#drop_them_here, #drop_file_icon{
+    pointer-events: none;
+}
+#drop_file_icon{
+    background: url('images/drop-file.png') top left no-repeat;
+    width: 66px;
+    height: 55px;
+    margin: 0 auto 7px;
+}
+#drop_files.active #drop_file_icon{
+    background-image: url('images/drop-file-a.png');
+}
+#drop_files.active #drop_them_here span{
+    font-weight: bold;
+}
+
+#loader{
+    margin: 10px auto;
+}
+
+#progress_bg{
+    background: #CCC;
+    height: 2px;
+    margin: 5px auto;
+    width: 80%;
+}
+#progress{
+    background: #009cff;
+    width: 0%;
+    height: 2px;
+}
+
+#errors{
+    color: red;
+    text-align: center;
+    margin-top: 30px;
+}
+#errors.noerror{
+    color: #009cff;
+}
+
+
+div#preloaded-images {
+   position: absolute;
+   overflow: hidden;
+   left: -9999px; 
+   top: -9999px;
+   height: 1px;
+   width: 1px;
+}

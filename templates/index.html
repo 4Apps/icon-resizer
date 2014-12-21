@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>iOS Icons</title>
+        <link rel="shortcut icon" href="{{ static_url('css/images/favico-16.png') }}" type="image/png">
+        <link href="{{ static_url('css/normalize.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ static_url('css/style.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+            <h1>iOS icon resizer</h1>
+            <div id="description">
+                This little tool will generate all iOS application icons from one 1024x1024 png/jpg file. In return you will get a lot of png files in one zip archive.<br /><br />
+            </div>
+            <div id="drop_files">
+                <div id="drop_them_here">
+                    <div id="drop_file_icon"></div>
+                    Drag your image file and <span>drop it</span> here
+                </div>
+                <img id="loader" class="hide" src="{{ settings['static_url_prefix'] }}css/images/ajax-loader.gif" alt="" />
+                <div id="progress_bg" class="hide"><div id="progress"></div></div>
+            </div>
+            <div id="errors"></div>
+        </div>
+        <div id="description2">
+            <strong>Works on Chrome</strong>, probably on other browsers too. Most probably will not work on Internet Explorer.<br />
+            <em>Icons are deleted hourly<em>
+        </div>
+
+
+        <div id="preloaded-images">
+           <img src="{{ settings['static_url_prefix'] }}css/images/drop-file-a.png" width="1" height="1" alt="" />
+        </div>
+
+
+        <script type="text/javascript">
+            var BaseUrl = '{{ reverse_url('HomePage') }}';
+            var StaticUrl = '{{ settings['static_url_prefix'] }}';
+        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="{{ static_url('js/main.js') }}"></script>
+    </body>
+</html>

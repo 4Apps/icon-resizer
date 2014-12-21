@@ -1,0 +1,131 @@
+#!/bin/sh
+
+
+# Go to the right directory
+#cd `dirname $0`/../../
+
+
+COMMIT="HEAD"
+LOCAL_BRANCH=`git name-rev --name-only HEAD`
+TRACKING_REMOTE=`git config branch.$LOCAL_BRANCH.remote`
+TRACKING_BRANCH="$TRACKING_REMOTE/$LOCAL_BRANCH"
+
+
+# Test non-ascii filenames
+echo "*Testing non-ascii filenames.. "
+if [ $(git diff --cached --name-only --diff-filter=A -z $COMMIT | LC_ALL=C tr -d '[ -~]\0' | wc -c) -gt 0 ]; then
+    echo "Error: Attempt to add a non-ascii file name."
+    echo
+    echo "This can cause problems if you want to work"
+    echo "with people on other platforms."
+    echo
+    echo "To be portable it is advisable to rename the file ..."
+    echo
+    exit 1
+fi
+echo " Done"
+echo
+
+
+
+# Test for whitespace errors
+echo "*Testing for whitespace errors.. "
+git diff-index --cached --check $COMMIT --
+if [ "$?" != "0" ]; then
+    echo "!!! ERROR !!!"
+    exit 1
+fi
+echo " Done"
+echo
+
+
+
+# Trying to compile all python files
+echo "*Try to compile all python files.."
+env python3 -m compileall -q ./
+
+if [ "$?" != "0" ]; then
+    echo "!!! ERROR !!!"
+    exit 1
+fi
+
+echo " Done"
+echo
+
+
+
+# Check project with pylint
+#echo "*Checking project with pylint.. "
+
+#./scripts/pylint/run
+#if [ "$?" != "0" ]; then
+#    echo "!!! ERROR !!!"
+#    exit 1
+#fi
+
+#echo " Done"
+#echo
+
+
+
+# Compile css
+if [ $(git diff-index --cached --name-only $COMMIT | grep \\.css | wc -l) -gt 0 ]; then
+    echo "*Css file(s) modified, compressing.. "
+
+    # spritemapper --padding=5 ./static/css/0-tetris.css && \
+    cat ./static/css/[0-9]-*.css | cssmin > ./static/css/app.css && \
+    git add ./static/css/app.css
+
+    if [ "$?" != "0" ]; then
+        echo "!!! ERROR !!!"
+        exit 1
+    fi
+
+    echo " Done"
+    echo
+fi
+
+
+
+# Compile js
+if [ $(git diff-index --cached --name-only $COMMIT | grep \\.js | wc -l) -gt 0 ]; then
+    echo "*Js file(s) modified, compressing.. "
+
+    cat ./static/js/[0-9]-*.js | slimit > ./static/js/app.js && \
+    cat ./static/js/1[0-9]-*.js | slimit --mangle >> ./static/js/app.js && \
+    git add ./static/js/app.js
+
+    if [ "$?" != "0" ]; then
+        echo "!!! ERROR !!!"
+        exit 1
+    fi
+
+    echo " Done"
+    echo
+fi
+
+
+
+# Check git remote changes
+if [ "$TRACKING_REMOTE" != "" ]; then
+    echo "*Checking git remote changes.. "
+
+    git fetch > /dev/null
+    git merge --no-commit --no-ff --quiet $TRACKING_BRANCH > /dev/null 2>&1
+
+    if [ "$?" != "0" ]; then
+        echo
+        echo "Remote repository has some new updates that conflicts with your changes. Stash your files first, then do 'git merge $TRACKING_BRANCH' and then apply stash by 'git stash pop'"
+        echo
+        exit 1
+    fi
+
+    echo " Done"
+    echo
+
+
+    echo "*Merging latest remote changes.. "
+    git merge $TRACKING_BRANCH --no-edit --quiet
+    echo " Done"
+    echo
+fi
