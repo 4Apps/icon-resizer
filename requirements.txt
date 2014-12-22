@@ -1,0 +1,2 @@
+pgmagick==0.5.8
+tornado==4.0.2
