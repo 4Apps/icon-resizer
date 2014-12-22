@@ -1,6 +1,9 @@
-# Byte-compiled / optimized / DLL files
+# Custom
+#
+static/icons/
+
+# Python
+#
 __pycache__/
 *.py[cod]
-
-# C extensions
 *.so
