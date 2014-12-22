@@ -30,6 +30,14 @@ h1{
     text-align: center;
 }
 
+.links{
+    font-size: 20px;
+    text-align: right;
+}
+.links a{
+    color: #424242;
+}
+
 #description{
     margin: 20px auto;
 }
