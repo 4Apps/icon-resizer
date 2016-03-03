@@ -17,7 +17,7 @@ settings = {
 
     # Urls
     'domain': 'donster.me',
-    'static_url_prefix': 'http://ios-icons.4apps.lv/static/',
+    'static_url_prefix': 'http://icons.4apps.lv/static/',
 
     # App specific
     'ios_sizes': [
@@ -134,6 +134,12 @@ settings = {
           "idiom" : "ipad",
           "scale" : "2x",
           "filename" : "icon-ipad-76@2x.png",
+        },
+        {
+          "size" : "83.5x83.5",
+          "idiom" : "ipad",
+          "scale" : "2x",
+          "filename" : "icon-ipad-83.5@2x.png",
         }
     ],
 

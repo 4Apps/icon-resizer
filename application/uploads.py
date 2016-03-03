@@ -100,9 +100,9 @@ class UploadHandler(BaseHandler):
         # Render images
         for item in icon_sizes:
             size = item['size'].split('x')
-            scale = int(item['scale'][0])
-            size = [ int(x) * scale for x in size ]
-            img.render(iconset_path + '/' + item['filename'], resize = size)
+            scale = float(item['scale'][0])
+            size = [ int(float(x) * scale) for x in size ]
+            img.render(iconset_path + '/' + item['filename'], resize=size)
 
         contents = {
             "images" : icon_sizes,
