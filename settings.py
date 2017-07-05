@@ -17,7 +17,7 @@ settings = {
 
     # Urls
     'domain': 'donster.me',
-    'static_url_prefix': 'http://icons.4apps.lv/static/',
+    'static_url_prefix': 'https://icons.4apps.lv/static/',
 
     # App specific
     'ios_sizes': [

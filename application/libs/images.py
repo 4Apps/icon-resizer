@@ -59,6 +59,10 @@ class Image():
         icc_data.update(open(settings['resources_path'] + 'icc/sRGB_v2.1bs.icc', 'rb').read())
         self.img.profile('icm', icc_data)
 
+    def removeIcc(self):
+        """ Remove all profiles """
+        self.img.profile('*', Blob())
+
 
     """
         resizeKeepRatio:

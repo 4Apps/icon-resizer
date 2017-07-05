@@ -16,48 +16,6 @@ class UploadHandler(BaseHandler):
         self.write(message)
 
 
-    def apply_icc(self, im):
-        """ Fix icc profiles """
-        try:
-            im.profile('icm')
-        except:
-            if im.colorSpace() == ColorspaceType.CMYKColorspace:
-                icc_data = Blob()
-                icc_data.update(open(self.settings['resources_path'] + 'icc/USWebUncoated.icc', 'rb').read())
-                im.profile('icm', icc_data)
-
-            if im.type() == ImageType.GrayscaleType:
-                icc_data = Blob()
-                icc_data.update(open(self.settings['resources_path'] + 'icc/sGray.icc', 'rb').read())
-                im.profile('icm', icc_data)
-
-        im.profile('!icm,*', Blob())
-
-        icc_data = Blob()
-        icc_data.update(open(self.settings['resources_path'] + 'icc/sRGB_v2.1bs.icc', 'rb').read())
-        im.profile('icm', icc_data)
-
-
-    def set_image_attributes(self, im):
-        """ Set basic attributes """
-        im.quality(100)
-
-        # Set other image properties
-        im.resolutionUnits(ResolutionType.PixelsPerInchResolution)
-
-
-
-    def render_image(self, upload_path, filename, image, size):
-        blob = Blob()
-        image.write(blob)
-
-        im = Image()
-        im.read(blob)
-
-        im.scale('%dx%d' % (size, size))
-        im.write('%s/%s-%d.png' % (upload_path, filename, size))
-
-
     def post(self):
         icon_type = self.get_argument('icon_type', 'ios')
 
@@ -92,7 +50,7 @@ class UploadHandler(BaseHandler):
 
         # Fix the image
         img.setAttributes()
-        img.applyIcc()
+        img.removeIcc()
 
         # Get icon sizes
         icon_sizes = self.settings['mac_sizes' if icon_type == 'mac' else 'ios_sizes']

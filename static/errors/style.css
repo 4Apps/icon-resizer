@@ -1,0 +1,50 @@
+body{
+    background: #444 url('images/bg.png') top left repeat;
+    font-family: 'Open Sans', Helvetica, Arial;
+    font-weight: 300;
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+h1{
+    color: #FFF;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+a{
+    color: #FFF;
+    text-decoration: none;
+}
+a:hover{
+    color: #DDD;
+}
+
+.app-wrapper{
+    background: #444 url(images/dog1@2x.png) center 125px no-repeat;
+    color: #AAA;
+    width: 500px;
+    height: 300px;
+    margin: 100px auto 0;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 80px #222;
+    text-shadow: 0px 1px 0px rgb(0, 0, 0);
+}
+
+.hint{
+    font-size: 0.9em;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    text-align: center;
+}
