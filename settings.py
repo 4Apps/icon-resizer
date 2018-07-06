@@ -23,6 +23,18 @@ settings = {
     'ios_sizes': [
         {
           "idiom" : "iphone",
+          "size" : "20x20",
+          "scale" : "2x",
+          "filename" : "icon-iphone-20@2x.png",
+        },
+        {
+          "idiom" : "iphone",
+          "size" : "20x20",
+          "scale" : "3x",
+          "filename" : "icon-iphone-20@3x.png",
+        },
+        {
+          "idiom" : "iphone",
           "size" : "29x29",
           "scale" : "1x",
           "filename" : "icon-iphone-29.png",
@@ -74,6 +86,20 @@ settings = {
           "size" : "60x60",
           "scale" : "3x",
           "filename" : "icon-iphone-60@3x.png",
+        },
+
+        # iPad
+        {
+          "idiom" : "ipad",
+          "size" : "20x20",
+          "scale" : "1x",
+          "filename" : "icon-ipad-20.png",
+        },
+        {
+          "idiom" : "ipad",
+          "size" : "20x20",
+          "scale" : "2x",
+          "filename" : "icon-ipad-20@2x.png",
         },
         {
           "idiom" : "ipad",
@@ -140,6 +166,12 @@ settings = {
           "idiom" : "ipad",
           "scale" : "2x",
           "filename" : "icon-ipad-83.5@2x.png",
+        },
+        {
+          "size" : "1024x1024",
+          "idiom" : "ios-marketing",
+          "scale" : "1x",
+          "filename" : "icon-ipad-1024.png",
         }
     ],
 
@@ -203,6 +235,12 @@ settings = {
           "size" : "512x512",
           "scale" : "2x",
           "filename" : "icon-mac-512@2x.png",
+        },
+        {
+          "idiom" : "mac",
+          "size" : "1024x1024",
+          "scale" : "1x",
+          "filename" : "icon-mac-1024.png",
         }
     ],
 
