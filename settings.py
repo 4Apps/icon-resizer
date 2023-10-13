@@ -6,7 +6,7 @@ base_path = os.path.dirname(os.path.realpath(__file__))
 settings = {
     # Base stuff
     'env': os.getenv('app_env', 'live'),
-    'debug': False,
+    'debug': True,
     'version': '0.2',
     'port': 7001,
 

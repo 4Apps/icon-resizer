@@ -22,7 +22,7 @@ if __name__ == "__main__":
     """ Web server initialization """
 
     # Setup default logging level
-    logging.getLogger().setLevel(logging.WARNING if settings['debug'] else logging.ERROR)
+    logging.getLogger().setLevel(logging.DEBUG if settings['debug'] else logging.ERROR)
 
     # Parse commandline arguments
     parser = argparse.ArgumentParser(description='Web Application Starter')
